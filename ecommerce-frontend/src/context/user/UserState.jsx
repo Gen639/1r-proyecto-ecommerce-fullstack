@@ -2,6 +2,10 @@ import { createContext, useReducer } from "react";
 import axios from "axios";
 import UserReducer from "./UserReducer";
 
+const initialState = {
+  users: [],
+};
+
 export const UserState = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
@@ -18,13 +22,15 @@ export const UserState = ({ children }) => {
   };
 
   return (
-    <GlobalContext.Provider
+    <UserContext.Provider
       value={{
         users: state.users,
         postUser,
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </UserContext.Provider>
   );
 };
+
+export const UserContext = createContext(initialState);

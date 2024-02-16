@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserState } from "../../../context/user/UserState";
+import { UserContext } from "../../../context/user/UserState";
 
 const Register = () => {
   const initialState = {
@@ -11,7 +11,7 @@ const Register = () => {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
 
-  // const { postUser } = useContext(UserState);
+  const { postUser } = useContext(UserContext);
 
   const clearState = () => {
     setData({ ...initialState });
@@ -27,6 +27,7 @@ const Register = () => {
       password: data.password,
     };
     console.log(newUser);
+    postUser(newUser);
     clearState();
   };
 

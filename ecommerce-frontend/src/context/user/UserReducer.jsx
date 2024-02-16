@@ -1,9 +1,9 @@
 const users = (state, action) => {
   switch (action.type) {
-    case POST_USER:
+    case "POST_USER":
       return {
         ...state,
-        users: [state.users, action.payload],
+        users: [...state.users, action.payload],
       };
     default:
       return state;
