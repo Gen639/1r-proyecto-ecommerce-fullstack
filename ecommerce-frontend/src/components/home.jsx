@@ -14,7 +14,7 @@ const MainMenu = () => {
 					</li>
 					<li className="main-menu__item">
 						<Link to="#" className="main-menu__link">
-							Contact
+							Cart
 						</Link>
 					</li>
 					<li className="main-menu__item">
