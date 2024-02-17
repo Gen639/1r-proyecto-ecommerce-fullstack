@@ -19,10 +19,10 @@ const MainMenu = () => {
 					</li>
 					<li className="main-menu__item">
 						<Link
-							to="/profile"
+							to="/login"
 							className="main-menu__link main-menu__link--actived"
 						>
-							Profile
+							Login
 						</Link>
 					</li>
 				</ul>

@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./components/home";
 import Login from "./components/login";
-import Profile from "./components/profile";
+// import Profile from "./components/profile";
 import TheHeader from "./components/theHeader";
 
 import { AuthContext, AuthProvider } from "./context/context";
+import { UserProvider } from './context/user/UserState';
 
 const App = () => {
   return (
@@ -16,8 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/profile" element={<Profile />} /> */}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
