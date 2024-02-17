@@ -6,6 +6,7 @@ import Home from "./components/home";
 import Login from "./components/login";
 import Register from "./components/register";
 import Profile from "./components/profile";
+import TheHeader from "./components/theHeader";
 
 import { AuthContext, AuthProvider } from "./context/context";
 

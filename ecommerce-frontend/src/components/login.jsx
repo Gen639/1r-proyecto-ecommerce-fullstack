@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { UserContext } from '../../context/UserContext/UserState'
+import { UserContext } from '../context/user/UserState'
 import { Form, Input, Button } from 'antd'
 
 const Login = () => {
