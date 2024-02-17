@@ -72,7 +72,7 @@ const Register = () => {
           onChange={handleInputChange}
         />
         <button type="submit" disabled={btnDisabled}>
-          Post the news
+          Register
         </button>
         <p>{message}</p>
       </form>
