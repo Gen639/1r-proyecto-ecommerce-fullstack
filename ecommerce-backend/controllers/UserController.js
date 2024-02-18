@@ -94,50 +94,9 @@ const UserController = {
       res.send({ message: "Welcome " + user.name, user, token });
     });
   },
-  // getUserInfo(req, res) {
-  //   User.findByPk(req.params.id, {
-  //     include: [
-  //       {
-  //         model: Order,
-  //         attributes: ["id", "number"],
-  //         include: [
-  //           {
-  //             model: Product,
-  //             through: "ProductOrder", // Specify the name of your join table
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   })
-  //     .then((user) => {
-  //       if (!user) {
-  //         return res.status(404).send({ message: "User not found" });
-  //       }
-  //       res.send({ user });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //       res.status(500).send({ error: "Internal Server Error" });
-  //     });
-  // },
 
   async getUserInfo(req, res) {
     try {
-      // const user = await User.findByPk(req.user.id, {
-      //   include: [
-      //     {
-      //       model: Order,
-      //       attributes: ["id", "number"],
-      //       include: [
-      //         {
-      //           model: Product,
-      //           through: "ProductOrder", // Specify the name of your join table
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // });
-
       const user = await User.findByPk(req.user.id, {
         include: [
           {
