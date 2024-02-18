@@ -82,43 +82,86 @@ const UserController = {
           .status(400)
           .send({ message: "User or Password are incorrect" });
       }
-      if (!user.confirmed) {
-        return res.status(400).send({
-          message:
-            "Please confirm your email. The confirmation link sent to indicated at registration email address.",
-        });
-      }
+      // if (!user.confirmed) {
+      //   return res.status(400).send({
+      //     message:
+      //       "Please confirm your email. The confirmation link sent to indicated at registration email address.",
+      //   });
+      // }
 
       const token = jwt.sign({ id: user.id }, jwt_secret);
       Token.create({ token, UserId: user.id });
       res.send({ message: "Welcome " + user.name, user, token });
     });
   },
-  getUserInfo(req, res) {
-    User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-          attributes: ["id", "number"],
-          include: [
-            {
-              model: Product,
-              through: "ProductOrder", // Specify the name of your join table
-            },
-          ],
-        },
-      ],
-    })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).send({ message: "User not found" });
-        }
-        res.send({ user });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        res.status(500).send({ error: "Internal Server Error" });
+  // getUserInfo(req, res) {
+  //   User.findByPk(req.params.id, {
+  //     include: [
+  //       {
+  //         model: Order,
+  //         attributes: ["id", "number"],
+  //         include: [
+  //           {
+  //             model: Product,
+  //             through: "ProductOrder", // Specify the name of your join table
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   })
+  //     .then((user) => {
+  //       if (!user) {
+  //         return res.status(404).send({ message: "User not found" });
+  //       }
+  //       res.send({ user });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //       res.status(500).send({ error: "Internal Server Error" });
+  //     });
+  // },
+
+  async getUserInfo(req, res) {
+    try {
+      // const user = await User.findByPk(req.user.id, {
+      //   include: [
+      //     {
+      //       model: Order,
+      //       attributes: ["id", "number"],
+      //       include: [
+      //         {
+      //           model: Product,
+      //           through: "ProductOrder", // Specify the name of your join table
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // });
+
+      const user = await User.findByPk(req.user.id, {
+        include: [
+          {
+            model: Order,
+            attributes: ["id", "number"],
+            include: [
+              {
+                model: Product,
+                through: "ProductOrder",
+              },
+            ],
+          },
+        ],
       });
+
+      if (!user) {
+        return res.status(404).send({ message: "User not found" });
+      }
+
+      res.send({ user });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send({ error: "Internal Server Error" });
+    }
   },
 
   async logout(req, res) {

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../context/UserContext/UserState";
+import { UserContext } from "../../../context/user/UserState";
 
 const Profile = () => {
   const { getUserInfo, user } = useContext(UserContext);
@@ -9,10 +9,15 @@ const Profile = () => {
   }, []);
 
   if (!user) {
-    return <span>Cargando...</span>;
+    return <span>Loading...</span>;
   }
 
-  return <div>Profile {user.name}</div>;
+  return (
+    <>
+      <div>Profile {user.name}</div>
+      <div>Email {user.email}</div>
+    </>
+  );
 };
 
 export default Profile;
