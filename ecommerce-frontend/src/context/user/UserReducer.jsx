@@ -5,6 +5,12 @@ const users = (state, action) => {
         ...state,
         users: [...state.users, action.payload],
       };
+    case "GET_USER_INFO":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
     default:
       return state;
   }
