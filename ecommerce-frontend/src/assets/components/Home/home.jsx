@@ -13,7 +13,7 @@ const MainMenu = () => {
 						</Link>
 					</li>
 					<li className="main-menu__item">
-						<Link to="#" className="main-menu__link">
+						<Link to="/Cart" className="main-menu__link">
 							Cart
 						</Link>
 					</li>
