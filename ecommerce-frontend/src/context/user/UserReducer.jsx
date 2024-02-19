@@ -10,9 +10,19 @@ const users = (state, action) => {
         ...state,
         user: action.payload,
       };
-
-    default:
-      return state;
+      case 'LOGIN':
+        return {
+          ...state,
+          token: action.payload.token,
+        };
+      case 'LOGOUT':
+        return {
+          user: null,
+          token: null,
+        }
+  
+      default:
+        return state
   }
 };
 export default users;

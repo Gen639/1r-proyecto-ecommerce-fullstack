@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./components/home";
-import Login from "./components/login";
+import Home from "./assets/components/Home/home";
+import Login from "./assets/components/Login/login";
 
 import Register from "./assets/components/Register/Register";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
