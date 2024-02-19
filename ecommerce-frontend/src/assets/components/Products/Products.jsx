@@ -1,5 +1,12 @@
-import React, { useContext, useEffect } from "react";
-
+import React, { useContext, useEffect, useState } from "react";
+import { Avatar, Card, Flex, Spin } from "antd";
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+const { Meta } = Card;
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 
 const Products = () => {
@@ -9,22 +16,43 @@ const Products = () => {
     getProducts();
   }, []);
 
-  const product = products.map((product) => {
+  if (products == "") {
     return (
-      <div key={product.id}>
-        <span>{product.name} </span>
-        <span>{product.price} EUR </span>
-        {/* <span>{product.price.toFixed(2)}</span> */}
-        {/* <button onClick={() => addCart(product)}>Add Cart</button> */}
-      </div>
+      <>
+        <span>Loading...</span>
+        <Spin />
+      </>
     );
-  });
-
+  }
+  console.log(products);
   return (
-    <div>
+    <>
       <h2>Product List</h2>
-      {product}
-    </div>
+      <Flex wrap="wrap" gap="small">
+        {products.map((product) => (
+          <div key={product.id}>
+            <Card
+              style={{
+                width: 230,
+                marginTop: 16,
+              }}
+              actions={[
+                <ShoppingCartOutlined />,
+                // <SettingOutlined key="setting" />,
+                // <EditOutlined key="edit" />,
+                // <EllipsisOutlined key="ellipsis" />,
+              ]}
+            >
+              <Meta
+                avatar={<Avatar src="#" />}
+                title={product.name}
+                description={`${product.price} EUR`}
+              />
+            </Card>
+          </div>
+        ))}
+      </Flex>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ const Profile = () => {
       </>
     );
   }
-  console.log(user);
+
   return (
     <>
       {" "}
