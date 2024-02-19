@@ -5,8 +5,6 @@ import { Form, Input, Button } from "antd";
 const Register = () => {
   const [message, setMessage] = useState("");
   const [form] = Form.useForm();
-  const [btnDisabled, setBtnDisabled] = useState(true);
-
   const { postUser } = useContext(UserContext);
 
   const onFinish = (values) => {
@@ -14,7 +12,7 @@ const Register = () => {
     postUser(values);
 
     form.resetFields();
-    setMessage("New user was succesfully registered!");
+    setMessage("User was succesfully registered!");
     setTimeout(() => {
       setMessage("");
     }, 3000);
@@ -68,7 +66,7 @@ const Register = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit" disabled={btnDisabled}>
+            <Button type="primary" htmlType="submit">
               Submit
             </Button>
           </Form.Item>
