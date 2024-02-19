@@ -9,12 +9,22 @@ import {
 const { Meta } = Card;
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 
+const cart = JSON.parse(localStorage.getItem("cart"));
+const initialState = {
+  products: [],
+  cart: cart ? cart : [],
+};
+
 const Products = () => {
-  const { getProducts, products } = useContext(ProductsContext);
+  const { getProducts, products, addCart, cart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   if (products == "") {
     return (
@@ -37,7 +47,7 @@ const Products = () => {
                 marginTop: 16,
               }}
               actions={[
-                <ShoppingCartOutlined />,
+                <ShoppingCartOutlined onClick={() => addCart(product)} />,
                 // <SettingOutlined key="setting" />,
                 // <EditOutlined key="edit" />,
                 // <EllipsisOutlined key="ellipsis" />,
