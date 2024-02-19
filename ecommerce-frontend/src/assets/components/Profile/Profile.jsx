@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     getUserInfo();
   }, []);
-
+  console.log(user);
   if (!user) {
     return (
       <>
