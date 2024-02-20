@@ -15,7 +15,7 @@ const Profile = () => {
   if (!user) {
     return (
       <>
-        <span>Loading...</span>;
+        <span>Loading...</span>
         <Spin />
       </>
     );
@@ -43,6 +43,40 @@ const Profile = () => {
             description={user.email}
           />
         </Card>
+        <div>
+          <div>
+            <h2>Order List</h2>
+            {user.Orders.map((order) => (
+              <div key={order.id}>
+                <h3>
+                  Order Number: {order.number}, Created on{" "}
+                  {new Date(
+                    order.Products[0].ProductOrder.createdAt
+                  ).toLocaleString()}
+                </h3>
+                <ul>
+                  {order.Products.map((product) => (
+                    <li key={product.id}>
+                      <p>
+                        Product: {product.name} / Price: {"\u20AC"}
+                        {product.price}{" "}
+                      </p>
+                      <p></p>
+                    </li>
+                  ))}
+                </ul>
+                <p>
+                  Total to Pay: {"\u20AC"}
+                  {order.Products.reduce(
+                    (total, product) => total + parseFloat(product.price),
+                    0
+                  ).toFixed(2)}
+                  {"\u20AC"}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
