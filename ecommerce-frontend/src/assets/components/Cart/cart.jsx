@@ -16,13 +16,17 @@ const Cart = () => {
 		clearCart()
 	}
 
-	const cartItem = cart.map((cartItem) => (
-		<Col span={8} key={cartItem._id}>
-			<Card title={cartItem.name} className="cart">
-				<span>{cartItem.price.toFixed(2)} €</span>
-			</Card>
-		</Col>
-	))
+	const cartItem = cart.map((cartItem) => {
+		console.log(cartItem);
+		return (
+			<Col span={8} key={cartItem._id}>
+				<Card title={cartItem.name} className="cart">
+					<span>{console.log(cartItem)};</span>
+					<span>{cartItem.price} €</span>
+				</Card>
+			</Col>
+		);
+	});
 	return (
 		<>
 			<h1>Cart</h1>
@@ -30,7 +34,7 @@ const Cart = () => {
 				{cart && cart.length > 0 ? (
 					cartItem
 				) : (
-					<span>No tienes ningún producto añadido</span>
+					<span>You dont have any products added</span>
 				)}
 			</section>
 			<button onClick={() => clearCart()}>Clear cart</button>

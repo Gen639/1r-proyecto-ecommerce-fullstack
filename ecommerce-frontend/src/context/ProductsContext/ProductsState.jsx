@@ -22,6 +22,15 @@ export const ProductsProvider = ({ children }) => {
     });
     return res;
   };
+  const clearCart = () => {
+
+    dispatch({
+    
+    type: "CLEAR_CART",
+    
+    });
+    
+    };
 
   // const addCart = (product) => {
   //   dispatch({
@@ -36,6 +45,7 @@ export const ProductsProvider = ({ children }) => {
         products: state.products,
         cart: state.cart,
         getProducts,
+        clearCart,
         // addCart,
       }}
     >
