@@ -22,6 +22,13 @@ export const ProductsProvider = ({ children }) => {
     });
     return res;
   };
+
+  const addCart = (product) => {
+    dispatch({
+      type: "ADD_CART",
+      payload: product,
+    });
+  };
   const clearCart = () => {
 
     dispatch({
@@ -32,13 +39,6 @@ export const ProductsProvider = ({ children }) => {
     
     };
 
-  // const addCart = (product) => {
-  //   dispatch({
-  //     type: "ADD_CART",
-  //     payload: product,
-  //   });
-  // };
-
   return (
     <ProductsContext.Provider
       value={{
@@ -46,7 +46,7 @@ export const ProductsProvider = ({ children }) => {
         cart: state.cart,
         getProducts,
         clearCart,
-        // addCart,
+        addCart,
       }}
     >
       {children}

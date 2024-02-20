@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../../context/user/UserState";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Result } from "antd";
 
 const Register = () => {
   const [message, setMessage] = useState("");

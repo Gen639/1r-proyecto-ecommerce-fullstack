@@ -1,30 +1,68 @@
-import React, { useContext, useEffect } from "react";
-
+import React, { useContext, useEffect, useState } from "react";
+import { Avatar, Card, Flex, Spin } from "antd";
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+const { Meta } = Card;
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 
+const cart = JSON.parse(localStorage.getItem("cart"));
+const initialState = {
+  products: [],
+  cart: cart ? cart : [],
+};
+
 const Products = () => {
-  const { getProducts, products } = useContext(ProductsContext);
+  const { getProducts, products, addCart, cart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  const product = products.map((product) => {
-    return (
-      <div key={product.id}>
-        <span>{product.name} </span>
-        <span>{product.price} EUR </span>
-        {/* <span>{product.price.toFixed(2)}</span> */}
-        {/* <button onClick={() => addCart(product)}>Add Cart</button> */}
-      </div>
-    );
-  });
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
+  if (products == "") {
+    return (
+      <>
+        <span>Loading...</span>
+        <Spin />
+      </>
+    );
+  }
+  console.log(products);
   return (
-    <div>
+    <>
       <h2>Product List</h2>
-      {product}
-    </div>
+      <Flex wrap="wrap" gap="small">
+        {products.map((product) => (
+          <div key={product.id}>
+            <Card
+              style={{
+                width: 230,
+                marginTop: 16,
+              }}
+              actions={[
+                <ShoppingCartOutlined onClick={() => addCart(product)} />,
+                // <SettingOutlined key="setting" />,
+                // <EditOutlined key="edit" />,
+                // <EllipsisOutlined key="ellipsis" />,
+              ]}
+            >
+              <Meta
+                avatar={<Avatar src="#" />}
+                title={product.name}
+                description={`${product.price} EUR`}
+              />
+            </Card>
+          </div>
+        ))}
+      </Flex>
+    </>
   );
 };
 
