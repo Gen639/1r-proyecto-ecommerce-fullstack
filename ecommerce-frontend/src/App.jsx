@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./assets/components/Home/home";
 import Login from "./assets/components/Login/login";
+import TheHeader from "./assets/components/Theheader/theHeader"
 
 import Register from "./assets/components/Register/Register";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
@@ -20,14 +21,19 @@ const App = () => {
       <ProductsProvider>
         <OrdersProvider>
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
+            <div className="container">
+              <TheHeader/>
+                <div className='options'>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/cart" element={<Cart />} />
+                  </Routes>
+                </div>
+            </div>
           </BrowserRouter>
         </OrdersProvider>
       </ProductsProvider>
@@ -36,3 +42,5 @@ const App = () => {
 };
 
 export default App;
+
+
