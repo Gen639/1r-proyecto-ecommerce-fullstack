@@ -21,14 +21,16 @@ const App = () => {
       <ProductsProvider>
         <OrdersProvider>
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
+            <div className="page-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+            </div>
             <Footer />
           </BrowserRouter>
         </OrdersProvider>
