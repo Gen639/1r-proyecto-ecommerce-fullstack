@@ -47,7 +47,7 @@ const Profile = () => {
           <div>
             <h2>Order List</h2>
             {user.Orders.map((order) => (
-              <div key={order.id}>
+              <Card key={order.id}>
                 <h3>
                   Order Number: {order.number}, Created on{" "}
                   {new Date(
@@ -66,14 +66,14 @@ const Profile = () => {
                   ))}
                 </ul>
                 <p>
-                  Total to Pay: {"\u20AC"}
+                  Total: {"\u20AC"}
                   {order.Products.reduce(
                     (total, product) => total + parseFloat(product.price),
                     0
                   ).toFixed(2)}
                   {"\u20AC"}
                 </p>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
