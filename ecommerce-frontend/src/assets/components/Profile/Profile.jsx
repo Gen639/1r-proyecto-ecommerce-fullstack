@@ -46,35 +46,40 @@ const Profile = () => {
         <div>
           <div>
             <h2>Order List</h2>
-            {user.Orders.map((order) => (
-              <Card key={order.id}>
-                <h3>
-                  Order Number: {order.number}, Created on{" "}
-                  {new Date(
-                    order.Products[0].ProductOrder.createdAt
-                  ).toLocaleString()}
-                </h3>
-                <ul>
-                  {order.Products.map((product) => (
-                    <li key={product.id}>
-                      <p>
-                        Product: {product.name} / Price: {"\u20AC"}
-                        {product.price}{" "}
-                      </p>
-                      <p></p>
-                    </li>
-                  ))}
-                </ul>
-                <p>
-                  Total: {"\u20AC"}
-                  {order.Products.reduce(
-                    (total, product) => total + parseFloat(product.price),
-                    0
-                  ).toFixed(2)}
-                  {"\u20AC"}
-                </p>
-              </Card>
-            ))}
+
+            {user.Orders.length === 0 ? (
+              <p>No orders found</p>
+            ) : (
+              user.Orders.map((order) => (
+                <Card key={order.id}>
+                  <h3>
+                    Order Number: {order.number}, Created on{" "}
+                    {new Date(
+                      order.Products[0].ProductOrder.createdAt
+                    ).toLocaleString()}
+                  </h3>
+                  <ul>
+                    {order.Products.map((product) => (
+                      <li key={product.id}>
+                        <p>
+                          Product: {product.name} / Price: {"\u20AC"}
+                          {product.price}{" "}
+                        </p>
+                        <p></p>
+                      </li>
+                    ))}
+                  </ul>
+                  <p>
+                    Total: {"\u20AC"}
+                    {order.Products.reduce(
+                      (total, product) => total + parseFloat(product.price),
+                      0
+                    ).toFixed(2)}
+                    {"\u20AC"}
+                  </p>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       </div>

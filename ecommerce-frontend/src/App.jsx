@@ -11,8 +11,9 @@ import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { UserProvider } from "./context/user/UserState";
 import Products from "./assets/components/Products/Products";
 import Profile from "./assets/components/Profile/Profile";
-import Cart from './assets/components/Cart/cart';
-import { OrdersProvider } from './context/OrderContext/orderState';
+import Cart from "./assets/components/Cart/cart";
+import { OrdersProvider } from "./context/OrderContext/orderState";
+import Footer from "./assets/components/Footer/Footer";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
         </OrdersProvider>
       </ProductsProvider>
