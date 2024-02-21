@@ -3,24 +3,28 @@ const { Order, User, Product } = require("../models/index.js");
 const OrderController = {
   async create(req, res) {
     try {
-      const { number, date, UserId, ProductId } = req.body;
+      const { number, date, ProductId } = req.body;
 
-      if (!number || !date || !UserId || !ProductId) {
+      if (!ProductId) {
         return res
           .status(400)
           .send(
             "All fields (number, date, and UserId, ProductId ) must be filled"
           );
       }
-      const existingUser = await User.findByPk(UserId);
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().split("T")[0];
+
+      const existingUser = await User.findByPk(req.user.id);
+      console.log(existingUser.id);
       if (!existingUser) {
-        return res.status(400).send({ error: "User not found" });
+        return res.status(400).send({ error: "Not logged" });
       }
 
       const createdOrder = await Order.create({
         number,
-        date,
-        UserId,
+        date: formattedDate,
+        UserId: existingUser.id,
       });
       await createdOrder.addProduct(ProductId);
 

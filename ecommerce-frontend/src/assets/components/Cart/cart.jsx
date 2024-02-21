@@ -11,15 +11,17 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const productsIdsToOrder = cart.map((cartItem) => cartItem.id);
+
   const createNewOrder = () => {
-    createOrder(cart);
+    createOrder(productsIdsToOrder);
+
     clearCart();
   };
 
   const cartItem = cart.map((cartItem) => {
-    console.log(cartItem);
     return (
-      <div key={cartItem._id}>
+      <div key={cartItem.id}>
         <Card title={cartItem.name} className="cart" style={{ width: "100%" }}>
           <span>{console.log(cartItem)}</span>
           <span>€ {cartItem.price} </span>
@@ -27,6 +29,8 @@ const Cart = () => {
       </div>
     );
   });
+  console.log(cart);
+  console.log(productsIdsToOrder);
   return (
     <>
       <h1>Cart</h1>

@@ -53,7 +53,7 @@ const Profile = () => {
               user.Orders.map((order) => (
                 <Card key={order.id}>
                   <h3>
-                    Order Number: {order.number}, Created on{" "}
+                    Order Number: {order.id}, Created on{" "}
                     {new Date(
                       order.Products[0].ProductOrder.createdAt
                     ).toLocaleString()}
