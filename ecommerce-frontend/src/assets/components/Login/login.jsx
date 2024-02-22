@@ -3,27 +3,45 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../context/user/UserState'
 import { Form, Input, Button } from 'antd'
 
+// const Login = () => {
+// 	const navigate = useNavigate()
+// 	const { login } = useContext(UserContext)
+
+// 	useEffect(() => {
+// 		setTimeout(() => {
+// 			const foundToken = JSON.parse(localStorage.getItem('token'))
+
+// 			if (foundToken) {
+// 				navigate('/profile')
+// 			}
+// 		}, 2000)
+// 	}, [login])
+
+// 	const onFinish = (values) => {
+// 		login(values)
+// 	}
+
+// 	const onFinishFailed = (errorInfo) => {
+// 		console.log('Failed:', errorInfo)
+// 	}
 const Login = () => {
 	const navigate = useNavigate()
-	const { login } = useContext(UserContext)
-
+	const { login, token } = useContext(UserContext) // Obtienes el token también
+  
 	useEffect(() => {
-		setTimeout(() => {
-			const foundToken = JSON.parse(localStorage.getItem('token'))
-
-			if (foundToken) {
-				navigate('/profile')
-			}
-		}, 2000)
-	}, [login])
-
+	  if (token) { // Comprueba la existencia del token inmediatamente
+		navigate('/profile')
+	  }
+	}, [token]) // Observa las dependencias del useEffect
+  
 	const onFinish = (values) => {
-		login(values)
+	  login(values)
 	}
-
+  
 	const onFinishFailed = (errorInfo) => {
-		console.log('Failed:', errorInfo)
+	  console.log('Failed:', errorInfo)
 	}
+  
 
 	return (
 		<div className="container">
