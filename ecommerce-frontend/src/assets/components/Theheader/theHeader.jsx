@@ -41,7 +41,7 @@ const items = [
 const Header = () => {
   let navigate = useNavigate();
   const [current, setCurrent] = useState("home");
-  const { token, setToken } = useContext(UserContext);
+  const { token } = useContext(UserContext);
 
   useEffect(() => {
     if (!token) {
