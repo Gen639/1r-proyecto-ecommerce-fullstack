@@ -11,8 +11,9 @@ const Profile = () => {
   useEffect(() => {
     getUserInfo();
   }, []);
+
   console.log(user);
-  if (!user) {
+  if (!user || !user.Orders) {
     return (
       <>
         <span>Loading...</span>
@@ -23,7 +24,6 @@ const Profile = () => {
 
   return (
     <>
-      {" "}
       <div>
         <h2>User Profile Info</h2>
         <Card
@@ -46,8 +46,8 @@ const Profile = () => {
         <div>
           <div>
             <h2>Order List</h2>
-
-            {user.Orders.length === 0 ? (
+            {console.log(user.Orders)}
+            {user && user.Orders.length === 0 ? (
               <p>No orders found</p>
             ) : (
               user.Orders.map((order) => (

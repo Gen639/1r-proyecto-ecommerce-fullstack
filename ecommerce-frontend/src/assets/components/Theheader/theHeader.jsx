@@ -43,12 +43,13 @@ const items = [
 const authItems = [
   {
     label: "Login",
+    key: "login",
     path: "/login",
     icon: <LoginOutlined />,
   },
   {
     label: "Register",
-    path: "/register",
+    key: "register",
     icon: <AuditOutlined />,
   },
 ];
@@ -112,12 +113,13 @@ const Header = () => {
         </Menu>
       ) : (
         <Menu
-          onClick={(e) => onClick(e.key)}
+          onClick={onClick}
           selectedKeys={[current]}
           mode="horizontal"
+          item={items}
         >
           {authItems.map((item) => (
-            <Menu.Item key={item.path} icon={item.icon}>
+            <Menu.Item key={item.key} icon={item.icon}>
               {item.label}
             </Menu.Item>
           ))}
