@@ -53,7 +53,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+footer {
+  background-color: #213547;
+  color: #ffffff;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  min-height: "20vh";
+}
+.page-content {
+  min-height: 60vh;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

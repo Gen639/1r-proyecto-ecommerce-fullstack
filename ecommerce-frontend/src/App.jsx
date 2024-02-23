@@ -12,8 +12,9 @@ import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { UserProvider } from "./context/user/UserState";
 import Products from "./assets/components/Products/Products";
 import Profile from "./assets/components/Profile/Profile";
-import Cart from './assets/components/Cart/cart';
-import { OrdersProvider } from './context/OrderContext/orderState';
+import Cart from "./assets/components/Cart/cart";
+import { OrdersProvider } from "./context/OrderContext/orderState";
+import Footer from "./assets/components/Footer/Footer";
 
 const App = () => {
   return (
@@ -24,16 +25,19 @@ const App = () => {
             <div className="container">
               <TheHeader/>
                 <div className='options'>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/cart" element={<Cart />} />
-                  </Routes>
+                  <div className="page-content">
+              <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                      <Route path="/products" element={<Products />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/cart" element={<Cart />} />
+                    </Routes>
                 </div>
             </div>
+            </div>
+            <Footer />
           </BrowserRouter>
         </OrdersProvider>
       </ProductsProvider>
