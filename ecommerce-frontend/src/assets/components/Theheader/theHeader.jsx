@@ -33,6 +33,11 @@ const items = [
     key: "profile",
     icon: <ProfileOutlined />,
   },
+  {
+    label: "Logout",
+    key: "logout",
+    icon: <ProfileOutlined />,
+  },
 ];
 
 const authItems = [
@@ -51,9 +56,11 @@ const authItems = [
 const Header = () => {
   let navigate = useNavigate();
   const [current, setCurrent] = useState("home");
-  const { token } = useContext(UserContext);
-  // const token = JSON.parse(localStorage.getItem("token"));
+  const { token, logout } = useContext(UserContext);
 
+  const logoutUser = () => {
+    logout();
+  };
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -80,6 +87,10 @@ const Header = () => {
         break;
       case "cart":
         navigate("/cart");
+        break;
+      case "logout":
+        logoutUser();
+        navigate("/");
         break;
     }
   };

@@ -7,7 +7,7 @@ router.post("/", UserController.create);
 router.get("/", UserController.getAll);
 router.post("/login", UserController.login);
 router.get("/getUserOrders", authentication, UserController.getUserInfo);
-router.delete("/", authentication, UserController.logout);
+router.delete("/logout", authentication, UserController.logout);
 router.get("/confirm/:emailToken", UserController.confirm);
 
 module.exports = router;

@@ -133,6 +133,7 @@ const UserController = {
           ],
         },
       });
+      console.log(req.user.id);
       res.send({ message: "Succesfully logged out" });
     } catch (error) {
       console.log(error);
