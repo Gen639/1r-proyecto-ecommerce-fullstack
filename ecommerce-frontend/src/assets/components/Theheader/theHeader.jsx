@@ -107,7 +107,7 @@ const Header = () => {
         >
           {authItems.map((item) => (
             <Menu.Item key={item.path} icon={item.icon}>
-              <Link to={item.path}>{item.label}</Link>
+              {item.label}
             </Menu.Item>
           ))}
         </Menu>
