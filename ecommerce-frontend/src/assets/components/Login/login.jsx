@@ -1,29 +1,8 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../context/user/UserState";
+import { UserContext } from "../../../context/UserContext/UserState";
 import { Form, Input, Button } from "antd";
 
-// const Login = () => {
-// 	const navigate = useNavigate()
-// 	const { login } = useContext(UserContext)
-
-// 	useEffect(() => {
-// 		setTimeout(() => {
-// 			const foundToken = JSON.parse(localStorage.getItem('token'))
-
-// 			if (foundToken) {
-// 				navigate('/profile')
-// 			}
-// 		}, 2000)
-// 	}, [login])
-
-// 	const onFinish = (values) => {
-// 		login(values)
-// 	}
-
-// 	const onFinishFailed = (errorInfo) => {
-// 		console.log('Failed:', errorInfo)
-// 	}
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useContext(UserContext); // Obtienes el token también

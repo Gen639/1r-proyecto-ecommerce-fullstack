@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../../../context/user/UserState";
+import { UserContext } from "../../../context/UserContext/UserState";
 import { Form, Input, Button, Result } from "antd";
 
 const Register = () => {

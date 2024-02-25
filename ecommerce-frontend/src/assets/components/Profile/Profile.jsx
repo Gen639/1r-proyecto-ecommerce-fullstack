@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../../context/user/UserState";
+import { UserContext } from "../../../context/UserContext/UserState";
 import { Avatar, Card } from "antd";
 
 import { Spin } from "antd";

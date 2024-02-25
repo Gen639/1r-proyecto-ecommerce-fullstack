@@ -9,7 +9,7 @@ import TheHeader from "./assets/components/Theheader/theHeader";
 import Register from "./assets/components/Register/Register";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 
-import { UserProvider } from "./context/user/UserState";
+import { UserProvider } from "./context/UserContext/UserState";
 import Products from "./assets/components/Products/Products";
 import Profile from "./assets/components/Profile/Profile";
 import Cart from "./assets/components/Cart/cart";

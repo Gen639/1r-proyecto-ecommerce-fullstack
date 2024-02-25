@@ -7,10 +7,10 @@ import {
   AmazonOutlined,
   WindowsOutlined,
   DropboxOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
 import "../../../App.scss";
-import { UserContext } from "../../../context/user/UserState";
+import { UserContext } from "../../../context/UserContext/UserState";
 import CustomMenu from "./CustomMenu";
 
 const items = [
@@ -42,45 +42,6 @@ const items = [
 ];
 
 const authItems = [
-  {
-    label: "Login",
-    key: "login",
-    path: "/login",
-    icon: <LoginOutlined />,
-  },
-  {
-    label: "Register",
-    key: "register",
-    icon: <AuditOutlined />,
-  },
-];
-
-const allItems = [
-  {
-    label: "Home",
-    key: "home",
-    icon: <WindowsOutlined />,
-  },
-  {
-    label: "Products",
-    key: "products",
-    icon: <AmazonOutlined />,
-  },
-  {
-    label: "Cart",
-    key: "cart",
-    icon: <DropboxOutlined />,
-  },
-  {
-    label: "Profile",
-    key: "profile",
-    icon: <ProfileOutlined />,
-  },
-  {
-    label: "Logout",
-    key: "logout",
-    icon: <ProfileOutlined />,
-  },
   {
     label: "Login",
     key: "login",
@@ -131,7 +92,7 @@ const Header = () => {
       {
         label: "Logout",
         key: "logout",
-        icon: <ProfileOutlined />,
+        icon: <LogoutOutlined />,
       },
     ]);
     console.log(navItems);
@@ -143,7 +104,6 @@ const Header = () => {
         {
           label: "Login",
           key: "login",
-          // path: "/login",
           icon: <LoginOutlined />,
         },
         {
@@ -186,35 +146,6 @@ const Header = () => {
   };
 
   return (
-    // <div>
-    //   {!token ? (
-    //     <Menu
-    //       onClick={onClick}
-    //       selectedKeys={[current]}
-    //       mode="horizontal"
-    //       item={items}
-    //     >
-    //       {authItems.map((item) => (
-    //         <Menu.Item key={item.key} icon={item.icon}>
-    //           {item.label}
-    //         </Menu.Item>
-    //       ))}
-    //     </Menu>
-    //   ) : (
-    //     <Menu
-    //       onClick={onClick}
-    //       selectedKeys={[current]}
-    //       mode="horizontal"
-    //       items={items}
-    //     >
-    //       {items.map((item) => (
-    //         <Menu.Item key={item.key} icon={item.icon}>
-    //           {item.label}
-    //         </Menu.Item>
-    //       ))}
-    //     </Menu>
-    //   )}
-    // </div>
     <div>
       <CustomMenu
         onClick={onClick}
