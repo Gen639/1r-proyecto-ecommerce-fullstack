@@ -10,13 +10,11 @@ const users = (state, action) => {
         ...state,
         user: action.payload,
       };
+
     case "LOGIN":
       return {
         ...state,
-        user: {
-          ...state.user,
-          token: action.payload.token,
-        },
+        token: action.payload.token,
       };
     case "LOGOUT":
       return {
