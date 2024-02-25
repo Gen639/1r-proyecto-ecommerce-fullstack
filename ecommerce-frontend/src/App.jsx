@@ -22,22 +22,21 @@ const App = () => {
       <ProductsProvider>
         <OrdersProvider>
           <BrowserRouter>
-            <div className="container">
-              <TheHeader />
-              <div className="options">
-                <div className="page-content">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/products" element={<Products />} />
+            <TheHeader />
+            <div className="options">
+              <div className="page-content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/products" element={<Products />} />
 
-                    <Route path="/cart" element={<Cart />} />
-                  </Routes>
-                </div>
+                  <Route path="/cart" element={<Cart />} />
+                </Routes>
               </div>
             </div>
+
             <Footer />
           </BrowserRouter>
         </OrdersProvider>

@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import { React, useState, useContext, useEffect } from "react";
+import { React, useState, useContext } from "react";
 import {
   ProfileOutlined,
   AuditOutlined,
@@ -7,92 +7,15 @@ import {
   AmazonOutlined,
   WindowsOutlined,
   DropboxOutlined,
+  ShoppingCartOutlined,
+  LogoutOutlined,
+  ProductOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+
 import "../../../App.scss";
 import { UserContext } from "../../../context/user/UserState";
-import CustomMenu from "./CustomMenu";
-
-const items = [
-  {
-    label: "Home",
-    key: "home",
-    icon: <WindowsOutlined />,
-  },
-  {
-    label: "Products",
-    key: "products",
-    icon: <AmazonOutlined />,
-  },
-  {
-    label: "Cart",
-    key: "cart",
-    icon: <DropboxOutlined />,
-  },
-  {
-    label: "Profile",
-    key: "profile",
-    icon: <ProfileOutlined />,
-  },
-  {
-    label: "Logout",
-    key: "logout",
-    icon: <ProfileOutlined />,
-  },
-];
-
-const authItems = [
-  {
-    label: "Login",
-    key: "login",
-    path: "/login",
-    icon: <LoginOutlined />,
-  },
-  {
-    label: "Register",
-    key: "register",
-    icon: <AuditOutlined />,
-  },
-];
-
-const allItems = [
-  {
-    label: "Home",
-    key: "home",
-    icon: <WindowsOutlined />,
-  },
-  {
-    label: "Products",
-    key: "products",
-    icon: <AmazonOutlined />,
-  },
-  {
-    label: "Cart",
-    key: "cart",
-    icon: <DropboxOutlined />,
-  },
-  {
-    label: "Profile",
-    key: "profile",
-    icon: <ProfileOutlined />,
-  },
-  {
-    label: "Logout",
-    key: "logout",
-    icon: <ProfileOutlined />,
-  },
-  {
-    label: "Login",
-    key: "login",
-    path: "/login",
-    icon: <LoginOutlined />,
-  },
-  {
-    label: "Register",
-    key: "register",
-    icon: <AuditOutlined />,
-  },
-];
+import "./theHeader.scss";
 
 const Header = () => {
   let navigate = useNavigate();
@@ -103,59 +26,6 @@ const Header = () => {
   const logoutUser = () => {
     logout();
   };
-  useEffect(() => {
-    if (token) {
-      navigate("/profile");
-    }
-    setNavItems([
-      {
-        label: "Home",
-        key: "home",
-        icon: <WindowsOutlined />,
-      },
-      {
-        label: "Products",
-        key: "products",
-        icon: <AmazonOutlined />,
-      },
-      {
-        label: "Cart",
-        key: "cart",
-        icon: <DropboxOutlined />,
-      },
-      {
-        label: "Profile",
-        key: "profile",
-        icon: <ProfileOutlined />,
-      },
-      {
-        label: "Logout",
-        key: "logout",
-        icon: <ProfileOutlined />,
-      },
-    ]);
-    console.log(navItems);
-  }, [token]);
-
-  useEffect(() => {
-    if (!token) {
-      setNavItems([
-        {
-          label: "Login",
-          key: "login",
-          // path: "/login",
-          icon: <LoginOutlined />,
-        },
-        {
-          label: "Register",
-          key: "register",
-          icon: <AuditOutlined />,
-        },
-      ]);
-      console.log(navItems);
-      navigate("/login");
-    }
-  }, [token]);
 
   const onClick = (e) => {
     setCurrent(e.key);
@@ -186,44 +56,41 @@ const Header = () => {
   };
 
   return (
-    // <div>
-    //   {!token ? (
-    //     <Menu
-    //       onClick={onClick}
-    //       selectedKeys={[current]}
-    //       mode="horizontal"
-    //       item={items}
-    //     >
-    //       {authItems.map((item) => (
-    //         <Menu.Item key={item.key} icon={item.icon}>
-    //           {item.label}
-    //         </Menu.Item>
-    //       ))}
-    //     </Menu>
-    //   ) : (
-    //     <Menu
-    //       onClick={onClick}
-    //       selectedKeys={[current]}
-    //       mode="horizontal"
-    //       items={items}
-    //     >
-    //       {items.map((item) => (
-    //         <Menu.Item key={item.key} icon={item.icon}>
-    //           {item.label}
-    //         </Menu.Item>
-    //       ))}
-    //     </Menu>
-    //   )}
-    // </div>
-    <div>
-      <CustomMenu
-        onClick={onClick}
-        selectedKeys={[current]}
-        items={items}
-        authItems={authItems}
-        navItems={navItems}
-      />
-    </div>
+    <nav className="header">
+      <div>
+        {token ? (
+          <>
+            <span className="menu-item" onClick={logoutUser}>
+              <LogoutOutlined />
+              <Link to="/">Logout</Link>
+            </span>
+            <span className="menu-item">
+              <ProductOutlined />
+              <Link to="/products">Products</Link>
+            </span>
+            <span className="menu-item">
+              <ShoppingCartOutlined />
+              <Link to="/cart">Cart</Link>
+            </span>
+            <span className="menu-item">
+              <UserOutlined />
+              <Link to="/profile">Profile</Link>
+            </span>
+          </>
+        ) : (
+          <>
+            {" "}
+            <span className="menu-item">
+              <LoginOutlined />
+              <Link to="/login">Login</Link>
+            </span>
+            <span className="menu-item">
+              <Link to="/register">Register</Link>
+            </span>
+          </>
+        )}
+      </div>
+    </nav>
   );
 };
 
