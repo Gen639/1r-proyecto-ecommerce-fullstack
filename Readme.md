@@ -25,7 +25,7 @@ Navegación: La tienda ofrece una navegación sencilla por categorías y product
 
 Carrito de compra: Los usuarios pueden añadir productos al carrito.
 
-Perfil: Los usuarios pueden ver su información personal, historial de pedidos y editar sus datos.
+Perfil: Los usuarios pueden ver su información personal.
 
 
 ## Tecnologías:
