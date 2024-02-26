@@ -13,6 +13,12 @@
 
 Esta tienda online permite a los usuarios registrarse, iniciar sesión, navegar por un catálogo de productos, añadirlos al carrito y realizar compras.
 
+## Inicialización:
+
+1º Debes instalar todas las librerias con el comando npm install.
+
+2º Para iniciar en local deberas usar el comando npm run dev.
+
 
 ## Funcionalidades:
 
