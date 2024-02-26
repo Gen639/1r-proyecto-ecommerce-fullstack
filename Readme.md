@@ -50,15 +50,15 @@ Perfil: Los usuarios pueden ver su información personal, historial de pedidos y
 
 `/home`: Página de inicio.
 
-`/login`/: Página de inicio de sesión.
+`/login`: Página de inicio de sesión.
 
-`/register`/: Página de registro.
+`/register`: Página de registro.
 
-`/products`/: Página de productos.
+`/products`: Página de productos.
 
-`/cart`/: Página del carrito de compra.
+`/cart`: Página del carrito de compra.
 
-`/profile`/: Página del perfil del usuario.
+`/profile`: Página del perfil del usuario.
 
 
 # Backend
