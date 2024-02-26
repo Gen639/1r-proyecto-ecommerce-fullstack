@@ -12,7 +12,7 @@ const Register = () => {
     postUser(values);
 
     form.resetFields();
-    setMessage("User was succesfully registered!");
+    setMessage("The confirmation codes have been alredy sent to ur email, pls check your email inbox.");
     setTimeout(() => {
       setMessage("");
     }, 3000);
