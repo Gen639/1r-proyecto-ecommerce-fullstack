@@ -1,14 +1,40 @@
 #root {
     top: 0;
-    max-width: 1080px;
+    max-width: 485px;
     margin: auto;
-    padding: 2rem;
+    padding: 0.1rem;
     text-align: center;
     margin-top: 0%;
   }
-  #Container {
-    position: fixed;
-    top: 0;
-    width: 100%;
+
+
+  .container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 98%;
+  
+    .options{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
+
+
+// .container {
+//   display: flex;
+//   flex: 1;
+//   flex-direction: column;
+//   width: 98%;
+
+//   &__options{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//   }
+// }
+  
  

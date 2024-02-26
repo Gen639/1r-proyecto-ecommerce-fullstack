@@ -9,9 +9,9 @@ import {
   DropboxOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import "../../../App.scss";
 import { UserContext } from "../../../context/UserContext/UserState";
 import CustomMenu from "./CustomMenu";
+import './theHeader.scss'
 
 const items = [
   {
@@ -146,7 +146,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="menu">
       <CustomMenu
         onClick={onClick}
         selectedKeys={[current]}

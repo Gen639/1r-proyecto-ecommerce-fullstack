@@ -15,6 +15,7 @@ import Profile from "./assets/components/Profile/Profile";
 import Cart from "./assets/components/Cart/cart";
 import { OrdersProvider } from "./context/OrderContext/orderState";
 import Footer from "./assets/components/Footer/Footer";
+import './App.scss'
 
 const App = () => {
   return (

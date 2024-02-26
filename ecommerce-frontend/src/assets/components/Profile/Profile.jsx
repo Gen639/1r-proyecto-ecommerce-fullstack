@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/UserContext/UserState";
 import { Avatar, Card } from "antd";
+import './Profile.style.scss'
 
 import { Spin } from "antd";
 const { Meta } = Card;
@@ -24,7 +25,7 @@ const Profile = () => {
 
   return (
     <>
-      <div>
+      <div className="Profile">
         <h2>User Profile Info</h2>
         <Card
           style={{ width: 300 }}
