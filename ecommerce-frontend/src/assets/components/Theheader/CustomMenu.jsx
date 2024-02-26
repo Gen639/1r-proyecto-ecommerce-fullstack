@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Menu } from "antd";
 import { UserContext } from "../../../context/UserContext/UserState";
 
-const CustomMenu = ({ onClick, selectedKeys, items, authItems, navItems }) => {
+const CustomMenu = ({ onClick, selectedKeys, navItems }) => {
   const { token } = useContext(UserContext);
 
   return (
-    <div>
+    <>
       {!token ? (
         <Menu onClick={onClick} selectedKeys={selectedKeys} mode="horizontal">
           {navItems.map((item) => (
@@ -24,7 +24,7 @@ const CustomMenu = ({ onClick, selectedKeys, items, authItems, navItems }) => {
           ))}
         </Menu>
       )}
-    </div>
+    </>
   );
 };
 

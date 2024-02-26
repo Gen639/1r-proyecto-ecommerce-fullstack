@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 import { OrdersContext } from "../../../context/OrderContext/orderState";
 import { Card, Col } from "antd";
+import "./cart.scss"
 
 const Cart = () => {
   const { cart, clearCart } = useContext(ProductsContext);
