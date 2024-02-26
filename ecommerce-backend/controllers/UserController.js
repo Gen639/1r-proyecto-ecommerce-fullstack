@@ -21,18 +21,18 @@ const UserController = {
         confirmed: false,
         role: "user",
       });
-      // const emailToken = jwt.sign({ email: req.body.email }, jwt_secret, {
-      //   expiresIn: "48h",
-      // });
-      // const url = "http://localhost:3000/users/confirm/" + emailToken;
+      const emailToken = jwt.sign({ email: req.body.email }, jwt_secret, {
+        expiresIn: "48h",
+      });
+      const url = "http://localhost:3000/users/confirm/" + emailToken;
 
-      // await transporter.sendMail({
-      //   to: req.body.email,
-      //   subject: "Confirm your registration",
-      //   html: `<h3>Welcome, you are one step away from registering </h3>
-      //   <a href=${url}> Click to confirm your registration</a>
-      //   `,
-      // });
+      await transporter.sendMail({
+        to: req.body.email,
+        subject: "Confirm your registration",
+        html: `<h3>Welcome, you are one step away from registering </h3>
+        <a href=${url}> Click to confirm your registration</a>
+        `,
+      });
       res.status(201).send({
         message: "User succesfully created",
         user,
@@ -82,12 +82,12 @@ const UserController = {
           .status(400)
           .send({ message: "User or Password are incorrect" });
       }
-      // if (!user.confirmed) {
-      //   return res.status(400).send({
-      //     message:
-      //       "Please confirm your email. The confirmation link sent to indicated at registration email address.",
-      //   });
-      // }
+      if (!user.confirmed) {
+        return res.status(400).send({
+          message:
+            "Please confirm your email. The confirmation link sent to indicated at registration email address.",
+        });
+      }
 
       const token = jwt.sign({ id: user.id }, jwt_secret);
       Token.create({ token, UserId: user.id });
